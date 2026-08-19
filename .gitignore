@@ -1,0 +1,32 @@
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.vite/
+
+# Java / Maven / Backend
+target/
+backend/target/
+*.class
+*.jar
+*.war
+
+# Database & Data
+data/
+backend/data/
+backend/uploads/
+
+# Binaries & Temporary files
+cloudflared
+cloudflared.exe
+cloudflared_fast.exe
+cookies
+cookies.txt
+*.log
+
+# IDE & OS
+.idea/
+.vscode/
+*.swp
+*.DS_Store
+Thumbs.db
