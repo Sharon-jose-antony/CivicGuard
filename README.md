@@ -5,6 +5,17 @@
 
 ---
 
+## 🌐 Live Application & Direct Access Links
+
+- **🚀 Direct Public Link (No Splash Screen / Instant Access):**  
+  [https://southeast-the-lloyd-classified.trycloudflare.com](https://southeast-the-lloyd-classified.trycloudflare.com)
+- **🏷️ Branded Custom Link:**  
+  [https://civicguardsharonjoseantony.loca.lt](https://civicguardsharonjoseantony.loca.lt) *(Enter IP: `117.239.103.162` if prompted)*
+
+🔑 **Admin Credentials:**  
+- **Username:** `admin`  
+- **Password:** `AdminPass123!`
+
 ## 🚀 Quick Setup & Run Instructions
 
 ### 1. Prerequisites
