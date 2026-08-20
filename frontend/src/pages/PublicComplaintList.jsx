@@ -50,9 +50,9 @@ export default function PublicComplaintList() {
 
   const filteredComplaints = complaints.filter(c => {
     const matchesSearch =
-      c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       c.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      c.description.toLowerCase().includes(searchQuery.toLowerCase());
+      c.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      c.category.toLowerCase().includes(searchQuery.toLowerCase());
     
     const matchesCategory = selectedCategory === 'ALL' || c.category === selectedCategory;
     const matchesStatus = selectedStatus === 'ALL' || c.status === selectedStatus;
@@ -168,7 +168,7 @@ export default function PublicComplaintList() {
               </div>
 
               <div className="card-footer">
-                <span>By: {complaint.name}</span>
+                <span title="Reporter identity hidden for privacy protection">🔒 Anonymous Citizen</span>
                 <span>
                   {complaint.createdAt ? new Date(complaint.createdAt).toLocaleDateString() : 'Recently'}
                 </span>

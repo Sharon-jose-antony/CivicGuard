@@ -171,7 +171,7 @@ export default function ComplaintForm({ onSubmissionSuccess }) {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label className="form-label">Citizen / Reporter Name *</label>
+            <label className="form-label">Citizen / Reporter Name (Strictly Confidential) *</label>
             <input
               type="text"
               className="form-input"
@@ -180,6 +180,9 @@ export default function ComplaintForm({ onSubmissionSuccess }) {
               onChange={(e) => setName(e.target.value)}
               required
             />
+            <div style={{ fontSize: '0.78rem', color: '#60a5fa', marginTop: '0.3rem' }}>
+              🔒 Privacy Protected: Your name is kept confidential and will <strong>NOT</strong> be displayed on the public portal. Only municipal administrators can access it.
+            </div>
           </div>
 
           <div className="form-group">
