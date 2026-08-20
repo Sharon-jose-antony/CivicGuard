@@ -159,42 +159,87 @@ export default function ComplaintForm({ onSubmissionSuccess }) {
           </div>
         </div>
       )}
-      {/* Leadership & Civic Vision Hero Card */}
+      {/* Leadership & Civic Representative Hero Section */}
       <div style={{
-        background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        borderRadius: '16px',
-        padding: '1.5rem 2rem',
-        marginBottom: '2rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '2rem',
-        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2)',
-        backdropFilter: 'blur(10px)',
-        flexWrap: 'wrap'
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gap: '1.5rem',
+        marginBottom: '2rem'
       }}>
-        <img
-          src="/pm-hero.jpg"
-          alt="Hon'ble Prime Minister Narendra Modi"
-          style={{
-            width: '130px',
-            height: '130px',
-            objectFit: 'cover',
-            borderRadius: '50%',
-            border: '3px solid #f97316',
-            boxShadow: '0 0 20px rgba(249, 115, 22, 0.3)'
-          }}
-        />
-        <div style={{ flex: 1, minWidth: '260px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(249, 115, 22, 0.15)', color: '#fb923c', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontSize: '0.78rem', fontWeight: 700, marginBottom: '0.5rem', border: '1px solid rgba(249, 115, 22, 0.3)' }}>
-            🇮🇳 Digital India — Citizen Empowerment & Civic Governance Initiative
+        {/* Leadership Card 1 */}
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          borderRadius: '16px',
+          padding: '1.25rem 1.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1.25rem',
+          boxShadow: '0 10px 20px -5px rgba(0, 0, 0, 0.3)',
+          backdropFilter: 'blur(10px)'
+        }}>
+          <img
+            src="/pm-hero.jpg"
+            alt="Hon'ble Prime Minister Narendra Modi"
+            style={{
+              width: '110px',
+              height: '110px',
+              objectFit: 'cover',
+              borderRadius: '50%',
+              border: '3px solid #f97316',
+              boxShadow: '0 0 15px rgba(249, 115, 22, 0.3)',
+              flexShrink: 0
+            }}
+          />
+          <div>
+            <div style={{ display: 'inline-block', background: 'rgba(249, 115, 22, 0.15)', color: '#fb923c', padding: '0.2rem 0.6rem', borderRadius: '9999px', fontSize: '0.72rem', fontWeight: 700, marginBottom: '0.4rem', border: '1px solid rgba(249, 115, 22, 0.3)' }}>
+              🇮🇳 Digital India Governance
+            </div>
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.3rem', lineHeight: 1.3 }}>
+              Citizen-Centric Governance
+            </h3>
+            <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.4, margin: 0 }}>
+              Empowering communities with digital platforms for fast, transparent municipal action.
+            </p>
           </div>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.4rem', lineHeight: 1.3 }}>
-            Empowering Citizens for Transparent Municipal Action
-          </h2>
-          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0 }}>
-            "Good governance is the key to a nation's progress. Empowering citizens through technology ensures swift, accountable, and secure grievance resolution."
-          </p>
+        </div>
+
+        {/* Representative Action Card 2 - Exact Photo */}
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%)',
+          border: '1px solid rgba(251, 191, 36, 0.3)',
+          borderRadius: '16px',
+          padding: '1.25rem 1.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1.25rem',
+          boxShadow: '0 10px 20px -5px rgba(251, 191, 36, 0.15)',
+          backdropFilter: 'blur(10px)'
+        }}>
+          <img
+            src="/loading-funny.png"
+            alt="People's Civic Action Representative"
+            style={{
+              width: '110px',
+              height: '110px',
+              objectFit: 'cover',
+              borderRadius: '16px',
+              border: '3px solid #fbbf24',
+              boxShadow: '0 0 15px rgba(251, 191, 36, 0.3)',
+              flexShrink: 0
+            }}
+          />
+          <div>
+            <div style={{ display: 'inline-block', background: 'rgba(251, 191, 36, 0.15)', color: '#fbbf24', padding: '0.2rem 0.6rem', borderRadius: '9999px', fontSize: '0.72rem', fontWeight: 700, marginBottom: '0.4rem', border: '1px solid rgba(251, 191, 36, 0.3)' }}>
+              🙏 Vanakkam! Public Grievance Cell
+            </div>
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#fbbf24', marginBottom: '0.3rem', lineHeight: 1.3 }}>
+              Direct Municipal Escalation
+            </h3>
+            <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.4, margin: 0 }}>
+              "Your complaint will be taken up directly with top municipal authorities. File below!"
+            </p>
+          </div>
         </div>
       </div>
 
