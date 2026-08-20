@@ -9,6 +9,8 @@ export default function ComplaintForm({ onSubmissionSuccess }) {
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);
+  const [audio, setAudio] = useState(null);
+  const [audioPreview, setAudioPreview] = useState(null);
 
   const [aiClassification, setAiClassification] = useState(null);
   const [isAiAnalyzing, setIsAiAnalyzing] = useState(false);
@@ -89,6 +91,25 @@ export default function ComplaintForm({ onSubmissionSuccess }) {
     setPhotoPreview(URL.createObjectURL(file));
   };
 
+  const handleAudioChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) {
+      setAudio(null);
+      setAudioPreview(null);
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setError('Audio file size error: Voice recording file exceeds maximum allowed limit of 5MB.');
+      e.target.value = '';
+      return;
+    }
+
+    setError(null);
+    setAudio(file);
+    setAudioPreview(URL.createObjectURL(file));
+  };
+
   const handleResetDb = async () => {
     try {
       await api.resetDatabase();
@@ -112,6 +133,9 @@ export default function ComplaintForm({ onSubmissionSuccess }) {
     if (photo) {
       formData.append('photo', photo);
     }
+    if (audio) {
+      formData.append('audio', audio);
+    }
 
     try {
       await api.createComplaint(formData);
@@ -122,6 +146,8 @@ export default function ComplaintForm({ onSubmissionSuccess }) {
       setDescription('');
       setPhoto(null);
       setPhotoPreview(null);
+      setAudio(null);
+      setAudioPreview(null);
       setAiClassification(null);
 
       if (onSubmissionSuccess) {
@@ -349,7 +375,7 @@ export default function ComplaintForm({ onSubmissionSuccess }) {
           </div>
 
           <div className="form-group">
-            <label className="form-label">Optional Photo Evidence (Max 2MB: JPG, JPEG, PNG)</label>
+            <label className="form-label">📷 Optional Photo Evidence (Max 2MB: JPG, JPEG, PNG)</label>
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
               <input
                 type="file"
@@ -365,6 +391,24 @@ export default function ComplaintForm({ onSubmissionSuccess }) {
                   alt="Preview"
                   style={{ width: '120px', height: '90px', objectFit: 'cover', borderRadius: '6px', border: '1px solid var(--border-color)' }}
                 />
+              </div>
+            )}
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">🎙️ Optional Voice Note / Audio Evidence (Max 5MB: MP3, WAV, M4A, OGG, AAC)</label>
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+              <input
+                type="file"
+                accept="audio/*,.mp3,.wav,.m4a,.ogg,.aac,.webm"
+                onChange={handleAudioChange}
+                style={{ color: 'var(--text-muted)' }}
+              />
+            </div>
+            {audioPreview && (
+              <div style={{ marginTop: '0.75rem', background: 'rgba(30, 41, 59, 0.7)', padding: '0.75rem', borderRadius: '8px', border: '1px solid rgba(59, 130, 246, 0.3)' }}>
+                <div style={{ fontSize: '0.8rem', color: '#60a5fa', marginBottom: '0.4rem', fontWeight: 600 }}>🔊 Voice Note Preview (Click Play to Test):</div>
+                <audio controls src={audioPreview} style={{ width: '100%', height: '40px' }} />
               </div>
             )}
           </div>

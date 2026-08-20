@@ -80,6 +80,56 @@ public class FileStorageService {
         }
     }
 
+    /**
+     * Securely validates and stores uploaded audio evidence file.
+     * Enforces audio MIME type checking, 5MB limit, and UUID filename renaming.
+     */
+    public String storeAudioFile(MultipartFile file) {
+        if (file == null || file.isEmpty()) {
+            return null;
+        }
+
+        long maxAudioSize = 5 * 1024 * 1024; // 5MB Limit for audio
+        if (file.getSize() > maxAudioSize) {
+            throw new IllegalArgumentException("Audio file size exceeds maximum allowed limit of 5MB");
+        }
+
+        List<String> allowedAudioMimeTypes = Arrays.asList(
+                "audio/mpeg", "audio/mp3", "audio/wav", "audio/x-wav",
+                "audio/ogg", "audio/mp4", "audio/m4a", "audio/x-m4a",
+                "audio/aac", "audio/webm"
+        );
+
+        String contentType = file.getContentType();
+        if (contentType == null || !allowedAudioMimeTypes.contains(contentType.toLowerCase())) {
+            throw new IllegalArgumentException("Invalid audio format. Allowed: MP3, WAV, M4A, OGG, AAC, WEBM.");
+        }
+
+        String originalFilename = StringUtils.cleanPath(file.getOriginalFilename() != null ? file.getOriginalFilename() : "");
+        String fileExtension = "";
+        int dotIndex = originalFilename.lastIndexOf('.');
+        if (dotIndex >= 0) {
+            fileExtension = originalFilename.substring(dotIndex).toLowerCase();
+        } else {
+            fileExtension = ".mp3";
+        }
+
+        List<String> allowedExtensions = Arrays.asList(".mp3", ".wav", ".m4a", ".ogg", ".aac", ".webm");
+        if (!allowedExtensions.contains(fileExtension)) {
+            fileExtension = ".mp3";
+        }
+
+        String newFilename = UUID.randomUUID().toString() + fileExtension;
+
+        try {
+            Path targetLocation = this.uploadPath.resolve(newFilename);
+            Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+            return "/api/uploads/" + newFilename;
+        } catch (IOException ex) {
+            throw new RuntimeException("Failed to store audio file " + newFilename, ex);
+        }
+    }
+
     public Path getFilePath(String filename) {
         return this.uploadPath.resolve(filename).normalize();
     }

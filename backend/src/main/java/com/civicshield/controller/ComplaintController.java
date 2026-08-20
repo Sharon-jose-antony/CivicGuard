@@ -64,7 +64,8 @@ public class ComplaintController {
             @RequestParam("location") String location,
             @RequestParam("category") String category,
             @RequestParam("description") String description,
-            @RequestParam(value = "photo", required = false) MultipartFile photo) {
+            @RequestParam(value = "photo", required = false) MultipartFile photo,
+            @RequestParam(value = "audio", required = false) MultipartFile audio) {
 
         try {
             // 1. Backend Input Sanitization using OWASP Jsoup HTML Sanitizer
@@ -73,10 +74,15 @@ public class ComplaintController {
             String sanitizedCategory = htmlSanitizerUtil.sanitizeStrictText(category);
             String sanitizedDescription = htmlSanitizerUtil.sanitize(description);
 
-            // 2. File Upload Validation & UUID Renaming
+            // 2. Photo & Audio Upload Validation & UUID Renaming
             String photoUrl = null;
             if (photo != null && !photo.isEmpty()) {
                 photoUrl = fileStorageService.storeFile(photo);
+            }
+
+            String audioUrl = null;
+            if (audio != null && !audio.isEmpty()) {
+                audioUrl = fileStorageService.storeAudioFile(audio);
             }
 
             Complaint complaint = new Complaint(
@@ -85,6 +91,7 @@ public class ComplaintController {
                     sanitizedCategory,
                     sanitizedDescription,
                     photoUrl,
+                    audioUrl,
                     "PENDING"
             );
 

@@ -221,8 +221,14 @@ export default function AdminPanel({ adminUser, setAdminUser }) {
                     <td style={{ padding: '0.75rem' }}>
                       <span className="category-tag">{item.category}</span>
                     </td>
-                    <td style={{ padding: '0.75rem', maxWidth: '280px' }}>
-                      {item.description}
+                    <td style={{ padding: '0.75rem', maxWidth: '300px' }}>
+                      <div>{item.description}</div>
+                      {item.audioUrl && (
+                        <div style={{ marginTop: '0.5rem', background: 'rgba(30, 41, 59, 0.7)', padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid rgba(96, 165, 250, 0.3)' }}>
+                          <div style={{ fontSize: '0.75rem', color: '#60a5fa', fontWeight: 600, marginBottom: '0.2rem' }}>🎙️ Voice Recording Evidence:</div>
+                          <audio controls src={`http://localhost:8080${item.audioUrl}`} style={{ width: '100%', height: '32px' }} />
+                        </div>
+                      )}
                     </td>
                     <td style={{ padding: '0.75rem' }}>
                       <span className={`status-badge ${item.status.toLowerCase()}`}>

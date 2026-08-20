@@ -25,6 +25,8 @@ public class Complaint {
 
     private String photoUrl;
 
+    private String audioUrl;
+
     @Column(nullable = false)
     private String status; // PENDING, IN_PROGRESS, RESOLVED
 
@@ -42,6 +44,18 @@ public class Complaint {
         this.category = category;
         this.description = description;
         this.photoUrl = photoUrl;
+        this.audioUrl = null;
+        this.status = status != null ? status : "PENDING";
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public Complaint(String name, String location, String category, String description, String photoUrl, String audioUrl, String status) {
+        this.name = name;
+        this.location = location;
+        this.category = category;
+        this.description = description;
+        this.photoUrl = photoUrl;
+        this.audioUrl = audioUrl;
         this.status = status != null ? status : "PENDING";
         this.createdAt = LocalDateTime.now();
     }
@@ -93,6 +107,14 @@ public class Complaint {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    public String getAudioUrl() {
+        return audioUrl;
+    }
+
+    public void setAudioUrl(String audioUrl) {
+        this.audioUrl = audioUrl;
     }
 
     public String getStatus() {
