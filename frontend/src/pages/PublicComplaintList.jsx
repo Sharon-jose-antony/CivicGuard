@@ -27,7 +27,11 @@ export default function PublicComplaintList() {
       setComplaints(data);
     } catch (err) {
       console.error('Failed to load complaints:', err);
-      setError('Could not connect to Spring Boot backend API. Ensure backend is running on http://localhost:8080.');
+      if (err.response?.status === 401 || err.response?.status === 403) {
+        setError('🔒 Restricted Access: Complaint records are confidential and strictly accessible to Municipal Officers. Please log in using the Municipal Officer Portal tab.');
+      } else {
+        setError('Could not connect to Spring Boot backend API. Ensure backend is running.');
+      }
     } finally {
       setLoading(false);
     }

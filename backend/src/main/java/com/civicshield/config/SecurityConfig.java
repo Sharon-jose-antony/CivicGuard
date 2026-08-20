@@ -49,15 +49,15 @@ public class SecurityConfig {
             .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
             .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)) // For H2 Console
             .authorizeHttpRequests(auth -> auth
-                // Public endpoints
-                .requestMatchers(HttpMethod.GET, "/api/complaints/**").permitAll()
+                // Public endpoints (Citizens can submit complaints & view security docs)
                 .requestMatchers(HttpMethod.POST, "/api/complaints").permitAll()
                 .requestMatchers("/api/uploads/**").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/csrf").permitAll()
                 .requestMatchers("/h2-console/**").permitAll()
 
-                // Admin endpoints (require authenticated session)
+                // Municipal Officer / Admin endpoints (require authenticated session)
+                .requestMatchers(HttpMethod.GET, "/api/complaints/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/complaints/*/status").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/api/complaints/*").hasRole("ADMIN")
                 .anyRequest().authenticated()

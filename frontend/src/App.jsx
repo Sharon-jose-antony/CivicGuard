@@ -6,7 +6,7 @@ import AdminPanel from './pages/AdminPanel';
 import SecurityInfoPage from './pages/SecurityInfoPage';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('list');
+  const [activeTab, setActiveTab] = useState('submit');
   const [adminUser, setAdminUser] = useState(null);
 
   return (
@@ -20,13 +20,9 @@ export default function App() {
 
       {/* Page Body View */}
       <main className="main-content">
-        {activeTab === 'list' && (
-          <PublicComplaintList />
-        )}
-
         {activeTab === 'submit' && (
           <ComplaintForm
-            onSubmissionSuccess={() => setActiveTab('list')}
+            onSubmissionSuccess={() => {}}
           />
         )}
 

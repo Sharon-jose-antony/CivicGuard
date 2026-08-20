@@ -5,7 +5,7 @@ export default function Navbar({ activeTab, setActiveTab, adminUser }) {
   return (
     <nav className="navbar">
       <div className="container nav-container">
-        <a href="#" className="brand-logo" onClick={(e) => { e.preventDefault(); setActiveTab('list'); }}>
+        <a href="#" className="brand-logo" onClick={(e) => { e.preventDefault(); setActiveTab('submit'); }}>
           <Shield className="shield-icon" size={28} />
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -23,15 +23,6 @@ export default function Navbar({ activeTab, setActiveTab, adminUser }) {
         <ul className="nav-links">
           <li>
             <button
-              className={`nav-link ${activeTab === 'list' ? 'active' : ''}`}
-              onClick={() => setActiveTab('list')}
-            >
-              <ListFilter size={18} />
-              Public Complaints
-            </button>
-          </li>
-          <li>
-            <button
               className={`nav-link ${activeTab === 'submit' ? 'active' : ''}`}
               onClick={() => setActiveTab('submit')}
             >
@@ -45,7 +36,7 @@ export default function Navbar({ activeTab, setActiveTab, adminUser }) {
               onClick={() => setActiveTab('admin')}
             >
               <Lock size={18} />
-              Admin Panel {adminUser && ' (Logged In)'}
+              Municipal Officer Portal {adminUser && ' (Logged In)'}
             </button>
           </li>
           <li>
