@@ -138,6 +138,45 @@ export default function ComplaintForm({ onSubmissionSuccess }) {
 
   return (
     <div className="container">
+      {/* Leadership & Civic Vision Hero Card */}
+      <div style={{
+        background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%)',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        borderRadius: '16px',
+        padding: '1.5rem 2rem',
+        marginBottom: '2rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '2rem',
+        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2)',
+        backdropFilter: 'blur(10px)',
+        flexWrap: 'wrap'
+      }}>
+        <img
+          src="/pm-hero.jpg"
+          alt="Hon'ble Prime Minister Narendra Modi"
+          style={{
+            width: '130px',
+            height: '130px',
+            objectFit: 'cover',
+            borderRadius: '50%',
+            border: '3px solid #f97316',
+            boxShadow: '0 0 20px rgba(249, 115, 22, 0.3)'
+          }}
+        />
+        <div style={{ flex: 1, minWidth: '260px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(249, 115, 22, 0.15)', color: '#fb923c', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontSize: '0.78rem', fontWeight: 700, marginBottom: '0.5rem', border: '1px solid rgba(249, 115, 22, 0.3)' }}>
+            🇮🇳 Digital India — Citizen Empowerment & Civic Governance Initiative
+          </div>
+          <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.4rem', lineHeight: 1.3 }}>
+            Empowering Citizens for Transparent Municipal Action
+          </h2>
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0 }}>
+            "Good governance is the key to a nation's progress. Empowering citizens through technology ensures swift, accountable, and secure grievance resolution."
+          </p>
+        </div>
+      </div>
+
       <div className="page-header" style={{ textAlign: 'center' }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(59, 130, 246, 0.15)', color: '#60a5fa', padding: '0.3rem 0.8rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 600, marginBottom: '0.5rem' }}>
           <Cpu size={14} /> UN SDG 16: Strong Institutions Track — Civic Complaint Pipeline Stage 1
