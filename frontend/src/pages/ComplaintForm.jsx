@@ -138,6 +138,27 @@ export default function ComplaintForm({ onSubmissionSuccess }) {
 
   return (
     <div className="container">
+      {/* Fun & Friendly Municipal Action Loading Modal Overlay */}
+      {loading && (
+        <div className="modal-overlay" style={{ background: 'rgba(15, 23, 42, 0.88)', backdropFilter: 'blur(10px)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 9999 }}>
+          <div className="modal-content" style={{ textAlign: 'center', padding: '2rem', maxWidth: '420px', background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)', border: '2px solid #fbbf24', borderRadius: '20px', boxShadow: '0 25px 50px -12px rgba(251, 191, 36, 0.3)' }}>
+            <img
+              src="/loading-funny.png"
+              alt="Municipal Action Vanakkam"
+              style={{ width: '200px', height: 'auto', borderRadius: '12px', marginBottom: '1rem', border: '2px solid #fbbf24', boxShadow: '0 0 20px rgba(251, 191, 36, 0.4)' }}
+            />
+            <h3 style={{ color: '#fbbf24', fontSize: '1.3rem', fontWeight: 800, marginBottom: '0.4rem' }}>
+              🙏 Vanakkam! Processing Complaint...
+            </h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.2rem', lineHeight: 1.4 }}>
+              OWASP Jsoup Sanitizer is cleaning your input & escalating grievance straight to municipal officers!
+            </p>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(245, 158, 11, 0.18)', color: '#fbbf24', padding: '0.45rem 1.1rem', borderRadius: '9999px', fontSize: '0.85rem', fontWeight: 700 }}>
+              <Sparkles size={16} className="spin" /> Sending with 100% Priority...
+            </div>
+          </div>
+        </div>
+      )}
       {/* Leadership & Civic Vision Hero Card */}
       <div style={{
         background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%)',

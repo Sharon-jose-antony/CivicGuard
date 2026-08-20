@@ -185,7 +185,16 @@ export default function AdminPanel({ adminUser, setAdminUser }) {
         <h3 style={{ marginBottom: '1.25rem', color: '#ffffff' }}>Manage Complaints</h3>
 
         {loading ? (
-          <p style={{ color: 'var(--text-muted)' }}>Loading complaints list...</p>
+          <div style={{ textAlign: 'center', padding: '2.5rem 1rem' }}>
+            <img
+              src="/loading-funny.png"
+              alt="Municipal Officer Vanakkam Loading"
+              style={{ width: '150px', height: 'auto', borderRadius: '12px', marginBottom: '0.8rem', border: '2px solid #60a5fa', boxShadow: '0 0 15px rgba(96, 165, 250, 0.3)' }}
+            />
+            <p style={{ color: '#60a5fa', fontWeight: 700, fontSize: '1rem' }}>
+              🙏 Vanakkam Officer! Fetching confidential municipal complaint files...
+            </p>
+          </div>
         ) : complaints.length === 0 ? (
           <p style={{ color: 'var(--text-muted)' }}>No complaints registered.</p>
         ) : (
